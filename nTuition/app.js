@@ -9,6 +9,7 @@ const flash = require('connect-flash');
 const loanRoutes = require('./routes/loanRoutes');
 const institutionRoutes = require('./routes/institutionRoutes');
 const userRoutes = require('./routes/userRoutes');
+const bodyParser = require('body-parser');
 
 //create app
 const app = express();
@@ -16,11 +17,12 @@ const app = express();
 //configure app
 
 //local server for now
-
 let port = 3000;
 let host = 'localhost';
 app.set('view engine', 'ejs');
 
+//Parse all json
+app.use(bodyParser.json());
 
 
 //connect to database
