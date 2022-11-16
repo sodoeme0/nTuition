@@ -11,6 +11,9 @@ const institutionRoutes = require('./routes/institutionRoutes');
 const userRoutes = require('./routes/userRoutes');
 const bodyParser = require('body-parser');
 
+//dotenv to hide pw
+require('dotenv/config');
+
 //create app
 const app = express();
 
@@ -27,11 +30,21 @@ app.use(bodyParser.json());
 
 //connect to database
 //local db
-mongoose.connect('mongodb://localhost:27017/nTuition', 
-                {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+// mongoose.connect('mongodb://localhost:27017/nTuition', 
+//                 {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+// .then(()=>{
+//     //start app
+//     app.listen(port, host, ()=>{
+//         console.log('Server is running on port', port);
+//     });
+// })
+// .catch(err=>console.log(err.message));
+
+mongoose.connect(process.env.DB_CONNECTION, 
+                {useNewUrlParser: true})
 .then(()=>{
     //start app
-    app.listen(port, host, ()=>{
+    app.listen(port, host, () => {
         console.log('Server is running on port', port);
     });
 })
