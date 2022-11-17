@@ -27,19 +27,6 @@ app.set('view engine', 'ejs');
 //Parse all json
 app.use(bodyParser.json());
 
-
-//connect to database
-//local db
-// mongoose.connect('mongodb://localhost:27017/nTuition', 
-//                 {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-// .then(()=>{
-//     //start app
-//     app.listen(port, host, ()=>{
-//         console.log('Server is running on port', port);
-//     });
-// })
-// .catch(err=>console.log(err.message));
-
 mongoose.connect(process.env.DB_CONNECTION, 
                 {useNewUrlParser: true})
 .then(()=>{

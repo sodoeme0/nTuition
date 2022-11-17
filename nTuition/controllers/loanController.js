@@ -46,7 +46,17 @@ exports.create = async (req, res) => {
 //Replace existing loan.
 exports.edit = async (req, res) => {
     try {
-        const updatedLoan = await Loan.updateOne({_id: req.params.postId}, {$set : {}});
+        const updatedLoan = await Loan.findByIdAndUpdate(req.params.postId, {
+            loan_type : req.body.loan_type,
+            loan_amount: req.body.loan_amount,
+            subsidization: req.body.subsidization,
+            interest_rate: req.body.interest_rate,
+            loan_term: req.body.loan_term,
+            lender_name: req.body.lender_name
+        });
+
+        //Response
+        res.json(updatedLoan);
     } catch(err){
         res.json({message: err});
     }
