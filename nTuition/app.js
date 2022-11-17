@@ -25,7 +25,8 @@ app.set('view engine', 'ejs');
 
 //connect to database
 //local db
-mongoose.connect('mongodb://localhost:27017/nTuition', 
+let connectString = "mongodb://success:!TSOdoemena234@140.82.30.206:27017/ntuition_prod?authMechanism=DEFAULT&authSource=admin"
+mongoose.connect(connectString, 
                 {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 .then(()=>{
     //start app
@@ -42,7 +43,7 @@ app.use(
         secret: "ajfeirf90aeu9eroejfoefj",
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({mongoUrl: 'mongodb://localhost:27017/nTuition'}),
+        store: new MongoStore({mongoUrl: connectString}),
         cookie: {maxAge: 60*60*1000}
         })
 );
