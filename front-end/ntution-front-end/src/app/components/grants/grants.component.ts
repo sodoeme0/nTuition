@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { grants } from '../../models/grants'
 
 @Component({
   selector: 'app-grants',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GrantsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    
+   }
 
+  grants: grants[] = [];
   ngOnInit(): void {
   }
 

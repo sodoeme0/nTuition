@@ -142,3 +142,43 @@
 .header{
     background-color: #8782b9;
 }
+
+.calcButton{
+  background-color: #8782b9;
+}
+
+.custom-control {
+  position: relative;
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.custom-control-label {
+  margin-bottom: 0;
+}
+
+.custom-control-input {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 8px;
+}
+
+
+.form-group {
+  flex-wrap: unset;
+  -webkit-box-flex: unset;
+  -moz-box-flex: unset;
+  width: 100%;
+  -webkit-flex: unset;
+  -ms-flex: unset;
+  flex: unset;
+  flex-shrink: unset;
+  flex-grow: unset;
+}
+
+@media(max-width: 767px ){
+  .results-table-calculators{
+      padding-left:5px;
+  }
+}

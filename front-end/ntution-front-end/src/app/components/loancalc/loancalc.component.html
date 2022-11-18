@@ -4,119 +4,94 @@
 
 <div class="container">
     <div class="row">
+   
         <div class="col-lg-1 col-md-3"></div>
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <div class="container-fluid">
                 <div class="row">
                     <div id="full-width-calc" class="card col-md-12 col-lg-12">
                     <h5 class="card-header header">Student Loan Information</h5>
-                        <div class="card-body">
+                        <div class="card-body form-group">
                             <div class="col-lg-4 col-md-4 col-sm-12">
                                 <h5 class="card-title">Current Loan Balance</h5>
-                                <input class="b3 form-control" data-cell="B3" data-format="$0,0.00" value="35000">
+                                <input class="form-control" [(ngModel)]="loanCalculation.currentLoanBalance">
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12">
                                 <h5 class="card-title">Annual Interest Rate</h5>
-                                <input class="b4 form-control" data-cell="B4" data-format="00.00%" value="6.8">
+                                <input class="form-control" [(ngModel)]="loanCalculation.annualInterestRate">
                             </div>
                             <div class="col-lg-4  col-md-4 col-sm-12">
                                 <h5 class="card-title">Loan Terms (Years)</h5>
-                                <input class="b5 form-control" data-cell="B5" value="10">
+                                <input class="form-control" type="text" [(ngModel)]="loanCalculation.loanTerms">
                             </div>
 
                         </div> <!-- end card-body -->
-                    <h5 class="card-header header">Prepayment Goal</h5>
+                <!--     <h5 class="card-header header">Prepayment Goal</h5>
                     <div class="card-body col-12 form-group">
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                                    <input type="hidden" class="b6" data-cell="B6" value="bydate">
-                                                    <div class="custom-control custom-radio">
-                                                        <input class="custom-control-input" type="radio" name="goalcheck" id="goalcheck1" value="permonth">
-                                                        <label class="custom-control-label" for="goalcheck1">Pay off student loans faster by<br>contributing more per month</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" name="goalcheck" id="goalcheck2" class="custom-control-input" value="bydate" checked="checked">
-                                                        <label class="custom-control-label" for="goalcheck2">Pay off student loans by a<br>chosen date</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-12 choice">
-                                                    <div id="payment-prepayment-goal" class="month" style="display:none;">
-                                                        <h5 class="card-title">New Monthly Payment</h5>
-                                                        <input class="b8 form-control" data-cell="B8" value="600">
-                                                    </div>
-                                                    <div id="term-prepayment-goal" class="date">
-                                                        <h5 class="card-title">Pay Off Student Loans in (Years)</h5>
-                                                        <input class="b7 form-control" data-cell="B7" value="7">
-                                                    </div>
-                                                </div>
-                                            </div><!-- end card-body -->
-                                            <input type="hidden" class="b12" data-cell="B12" data-formula="ABS(PMT((B4/12),(B5*12),B3))" value="402.7811556373918">
-                                            <input type="hidden" class="b13" data-cell="B13" data-formula="ABS(PMT((B4/12),(B7*12),B3))" value="524.8284919491994">
-                                            <input type="hidden" class="b14" data-cell="B14" data-formula="ABS(B13-B12)" value="122.04733631180756">
-                                            <input type="hidden" class="b15" data-cell="B15" data-formula="ABS(CUMIPMT((B4/12),(B5*12),B3,1,(B5*12),0)
-                                            )" value="13333.738676487283">
-                                            <input type="hidden" class="b16" data-cell="B16" data-formula="ABS(CUMIPMT((B4/12),(B7*12),B3,1,(B7*12),0)
-                                            )" value="9085.593323733017">
-                                            <input type="hidden" class="b17" data-cell="B17" data-formula="ABS(B15-B16)" value="4248.145352754265">
-                                            <input type="hidden" class="bb12" data-cell="BB12" data-formula="B12" value="402.7811556373918">
+                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" name="goalcheck" id="goalcheck1" value="permonth" (change)="onPerMonthChange($event)">
+                                <label class="custom-control-label" for="goalcheck1">Pay off student loans faster by<br>contributing more per month</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" name="goalcheck" id="goalcheck2" class="custom-control-input" value="bydate" checked="checked" (change)="onByDateChange($event)">
+                                <label class="custom-control-label" for="goalcheck2">Pay off student loans by a<br>chosen date</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div id="payment-prepayment-goal" class="month" *ngIf="isDisplayedPerMonth">
+                                <h5 class="card-title">New Monthly Payment</h5>
+                                <input class="form-control" type="text" [(ngModel)]="loanCalculation.newMonthlyPayment">
+                            </div>
+                            <div id="term-prepayment-goal bydate" class="date" *ngIf="isDisplayedByDate">
+                                <h5 class="card-title">Pay Off Student Loans in (Years)</h5>
+                                <input class="form-control" [(ngModel)]="loanCalculation.payOffYear">
+                            </div> 
+                           
+                        </div>
+                    </div>-->
+
+                    <br>
+                    <div class="card-body col-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div id="calcButton">
+                        <input type="button" class="calcButton" value="Calculate" (click)="calculateLoan()"/>
+                    </div>
+                    </div>
+                    </div>
 
 
-                                            <div id="calculator-results-table" class="card-body results-table-calculators">
-                                                <h2 class="card-title">Calculator Results</h2>
-                                                <table class="table">
-                                                    <thead>
-                                                    <tr>
-                                                        <th scope="col"></th>
-                                                        <th scope="col" class="regular">Current</th>
-                                                        <th scope="col" class="regular">New</th>
-                                                        <th scope="col" class="regular">Savings</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th scope="row" class="regular">Repayment Length</th>
-                                                        <td class="bold">
-                                                            <span class="c5" data-cell="C5" data-formula="B5">10</span> years
-                                                        </td>
-                                                        <td class="bold">
-                                                            <span class="C7" data-cell="C7">7</span> years
-                                                        </td>
-                                                        <td class="bold highlight">
-                                                            <span class="c9" data-cell="C9" data-format="0,0">3</span> years
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="regular">Interest Payments</th>
-                                                        <td class="bold">
-                                                            <span class="b24" data-cell="B24" data-formula="ABS(CUMIPMT(B4/12,B5*12,B3,1,B5*12,0))" data-format="$0,0">$13,334</span>
-                                                        </td>
-                                                        <td class="bold">
-                                                                    <span class="b25" data-cell="B25" data-format="$0,0">$9,085</span>
-                                                        </td>
-                                                        <td class="bold highlight">
-                                                            <span class="b26" data-cell="B26" data-format="$0,0">$4,248</span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="regular">Total Cost</th>
-                                                        <td class="bold">
-                                                            <span class="t24" data-cell="T24" data-formula="B3+B24" data-format="$0,0">$48,334</span>
-                                                        </td>
-                                                        <td class="bold">
-                                                            <span class="T25" data-cell="T25" data-formula="" data-format="$0,0">$44,085</span>
-                                                        </td>
-                                                        <td class="bold highlight">
-                                                            <span class="T26" data-cell="T26" data-format="$0,0">$4,248</span>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            
-
-                                        </div> <!-- end card -->
-                                    </div> <!-- end row -->
-                                </div>
+                    <div id="calculator-results-table" class="card-body results-table-calculators">
+                        <h2 class="card-title">Calculator Results</h2>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="regular">Monthly Payment</th>
+                                    <td class="bold">
+                                        <span class="c5">${{replacementLengthCurrent}}</span> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="regular">Total Interest Paid</th>
+                                    <td class="bold">
+                                        <span class="b24">${{interestPaymentsCurrent}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="regular">Total Cost of Loan</th>
+                                    <td class="bold">
+                                        <span class="t24">${{totalCostCurrent}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> <!-- end card -->
+                </div> <!-- end row -->
+            </div>
                         
             </div>
         </div>
+        
     </div>
 </div>
