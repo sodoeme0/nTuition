@@ -1,0 +1,126 @@
+<div>
+    <img class="school-cost-image" src="../../../assets/img/OIP.jpg"/>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-3 col-xs-3">
+            
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-3 col-xs-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{courseButtonName}} 
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li  class="dropdown-item">
+                    <a class="dropdown-item">Graduate &raquo;</a>
+                    <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item">In person</a></li>
+                        <li><a class="dropdown-item">Online</a></li>
+                        <li><a class="dropdown-item" (click)="changeCourseButtonText()">All</a></li>
+                    </ul>
+                 </li>
+                  <li>
+                    <a class="dropdown-item">Undergraduate &raquo;</a>
+                    <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item">In person</a></li>
+                        <li><a class="dropdown-item">Online</a></li>
+                        <li><a class="dropdown-item">All</a></li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3">
+            <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuSchool" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{schoolButtonName}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdownMenuSchoolMenu">
+                      <li><a class="dropdown-item" (click)="changeSchoolButtonText()">UNC Charlotte</a>
+                     </li>
+                      <li><a class="dropdown-item">UNC Chapel Hill</a></li>
+                    </ul>
+            </div>
+        </div>
+        
+    </div>
+
+<br>
+    <div class="row" id="resultCards" *ngIf="isResultsAvailable == true">
+        <div class="col-lg-3 col-md-4 col-sm-3 col-xs-3">
+            
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-3 col-xs-3" >
+            <div class="card text-white bg-success  mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{institutionCost.institutionName}}</div>
+                <div class="card-body">
+                  <h5 class="card-title">Location</h5>
+                  <p class="card-text">{{institutionCost.streetAddr1}}
+                    <br>
+                    {{institutionCost.city}}, {{institutionCost.state}}, {{institutionCost.country}}, {{institutionCost.postal}}
+                  </p>
+                  <p class="card-text">Institution Type - {{institutionCost.institutionType}}</p><span></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" >
+            <div class="card text-white bg-success  mb-3" style="max-width: 18rem;">
+                <div class="card-header">Graduate Course</div>
+                <div class="card-body">
+                  <h5 class="card-title">Tuition Costs</h5>
+                  <p class="card-text">In State tuition: ${{institutionCost.tuition_rates_instate}}</p>
+                  <p class="card-text">Out of State tuition: ${{institutionCost.tuition_rates_outofstate}}</p>
+                  <p class="card-text">Online tuition: ${{institutionCost.tuition_rates_online}}</p>
+                  <p class="card-text">International tuition: ${{institutionCost.tuition_rates_international}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+// make it as accordion for smaller screens
+if (window.innerWidth < 992) {
+
+  // close all inner dropdowns when parent is closed
+  document.querySelectorAll('.dropdown').forEach(function(everydropdown){
+    everydropdown.addEventListener('hidden.bs.dropdown', function () {
+      // after dropdown is hidden, then find all submenus
+        this.querySelectorAll('.submenu').forEach(function(everysubmenu){
+          // hide every submenu as well
+          everysubmenu.style.display = 'none';
+        });
+    })
+  });
+
+  document.querySelectorAll('.dropdown-menu a').forEach(function(element){
+    element.addEventListener('click', function (e) {
+        let nextEl = this.nextElementSibling;
+        if(nextEl && nextEl.classList.contains('submenu')) {	
+          // prevent opening link if link needs to open dropdown
+          e.preventDefault();
+          if(nextEl.style.display == 'block'){
+            nextEl.style.display = 'none';
+          } else {
+            nextEl.style.display = 'block';
+          }
+
+        }
+    });
+  })
+}
+// end if innerWidth
+}); 
+
+
+</script>
+
+

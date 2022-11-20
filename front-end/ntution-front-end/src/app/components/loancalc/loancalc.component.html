@@ -1,0 +1,97 @@
+<div>
+    <img class="home-image" src="../../../assets/img/student-loan-calculators.jpg"/>
+</div>
+
+<div class="container">
+    <div class="row">
+   
+        <div class="col-lg-1 col-md-3"></div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="full-width-calc" class="card col-md-12 col-lg-12">
+                    <h5 class="card-header header">Student Loan Information</h5>
+                        <div class="card-body form-group">
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <h5 class="card-title">Current Loan Balance</h5>
+                                <input class="form-control" [(ngModel)]="loanCalculation.currentLoanBalance">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <h5 class="card-title">Annual Interest Rate</h5>
+                                <input class="form-control" [(ngModel)]="loanCalculation.annualInterestRate">
+                            </div>
+                            <div class="col-lg-4  col-md-4 col-sm-12">
+                                <h5 class="card-title">Loan Terms (Years)</h5>
+                                <input class="form-control" type="text" [(ngModel)]="loanCalculation.loanTerms">
+                            </div>
+
+                        </div> <!-- end card-body -->
+                <!--     <h5 class="card-header header">Prepayment Goal</h5>
+                    <div class="card-body col-12 form-group">
+                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" name="goalcheck" id="goalcheck1" value="permonth" (change)="onPerMonthChange($event)">
+                                <label class="custom-control-label" for="goalcheck1">Pay off student loans faster by<br>contributing more per month</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" name="goalcheck" id="goalcheck2" class="custom-control-input" value="bydate" checked="checked" (change)="onByDateChange($event)">
+                                <label class="custom-control-label" for="goalcheck2">Pay off student loans by a<br>chosen date</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div id="payment-prepayment-goal" class="month" *ngIf="isDisplayedPerMonth">
+                                <h5 class="card-title">New Monthly Payment</h5>
+                                <input class="form-control" type="text" [(ngModel)]="loanCalculation.newMonthlyPayment">
+                            </div>
+                            <div id="term-prepayment-goal bydate" class="date" *ngIf="isDisplayedByDate">
+                                <h5 class="card-title">Pay Off Student Loans in (Years)</h5>
+                                <input class="form-control" [(ngModel)]="loanCalculation.payOffYear">
+                            </div> 
+                           
+                        </div>
+                    </div>-->
+
+                    <br>
+                    <div class="card-body col-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div id="calcButton">
+                        <input type="button" class="calcButton" value="Calculate" (click)="calculateLoan()"/>
+                    </div>
+                    </div>
+                    </div>
+
+
+                    <div id="calculator-results-table" class="card-body results-table-calculators">
+                        <h2 class="card-title">Calculator Results</h2>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="regular">Monthly Payment</th>
+                                    <td class="bold">
+                                        <span class="c5">${{replacementLengthCurrent}}</span> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="regular">Total Interest Paid</th>
+                                    <td class="bold">
+                                        <span class="b24">${{interestPaymentsCurrent}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="regular">Total Cost of Loan</th>
+                                    <td class="bold">
+                                        <span class="t24">${{totalCostCurrent}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> <!-- end card -->
+                </div> <!-- end row -->
+            </div>
+                        
+            </div>
+        </div>
+        
+    </div>
+</div>
