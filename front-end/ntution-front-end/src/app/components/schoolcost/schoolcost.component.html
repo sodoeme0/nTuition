@@ -14,20 +14,20 @@
                   {{courseButtonName}} 
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li  class="dropdown-item">
-                    <a class="dropdown-item">Graduate &raquo;</a>
-                    <ul class="submenu dropdown-menu">
-                        <li><a class="dropdown-item">In person</a></li>
-                        <li><a class="dropdown-item">Online</a></li>
-                        <li><a class="dropdown-item" (click)="changeCourseButtonText()">All</a></li>
+                  <li class="dropdown-item">
+                    <div class="dropdown-item">Graduate &raquo;</div>
+                    <ul class="submenu">
+                        <li><a class="dropdown-item" (click)="changeCourseButtonText('Graduate', 'Graduate - In person')">In person</a></li>
+                        <li><a class="dropdown-item" (click)="changeCourseButtonText('Graduate', 'Graduate - Online')">Online</a></li>
+                        <li><a class="dropdown-item" (click)="changeCourseButtonText('Graduate', 'Graduate - All')">All</a></li>
                     </ul>
                  </li>
-                  <li>
-                    <a class="dropdown-item">Undergraduate &raquo;</a>
-                    <ul class="submenu dropdown-menu">
-                        <li><a class="dropdown-item">In person</a></li>
-                        <li><a class="dropdown-item">Online</a></li>
-                        <li><a class="dropdown-item">All</a></li>
+                  <li class="dropdown-item">
+                    <div class="dropdown-item">Undergraduate &raquo;</div>
+                    <ul class="submenu">
+                        <li><a class="dropdown-item" (click)="changeCourseButtonText('Undergraduate', 'Undergraduate - In person')">In person</a></li>
+                        <li><a class="dropdown-item" (click)="changeCourseButtonText('Undergraduate', 'Undergraduate - Online')">Online</a></li>
+                        <li><a class="dropdown-item" (click)="changeCourseButtonText('Undergraduate', 'Undergraduate - All')">All</a></li>
                     </ul>
                 </li>
                 </ul>
@@ -40,9 +40,7 @@
                       {{schoolButtonName}} <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdownMenuSchoolMenu">
-                      <li><a class="dropdown-item" (click)="changeSchoolButtonText()">UNC Charlotte</a>
-                     </li>
-                      <li><a class="dropdown-item">UNC Chapel Hill</a></li>
+                      <li *ngFor="let school of availableInstitutions"><a class="dropdown-item" (click)="changeSchoolButtonText(school.institutionName)">{{school.institutionName}}</a></li>
                     </ul>
             </div>
         </div>
@@ -55,6 +53,18 @@
             
         </div>
         <div class="col-lg-3 col-md-4 col-sm-3 col-xs-3" >
+          <div class="card text-white bg-success  mb-3" style="max-width: 18rem;">
+              <div class="card-header">{{courseType}}</div>
+              <div class="card-body">
+                <h5 class="card-title">Tuition Costs</h5>
+                <p class="card-text">In State tuition: ${{institutionCost.tuition_rates_instate}}</p>
+                <p class="card-text">Out of State tuition: ${{institutionCost.tuition_rates_outofstate}}</p>
+                <p class="card-text">Online tuition: ${{institutionCost.tuition_rates_online}}</p>
+                <p class="card-text">International tuition: ${{institutionCost.tuition_rates_international}}</p>
+              </div>
+          </div>
+      </div>
+        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" >
             <div class="card text-white bg-success  mb-3" style="max-width: 18rem;">
                 <div class="card-header">{{institutionCost.institutionName}}</div>
                 <div class="card-body">
@@ -67,18 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3" >
-            <div class="card text-white bg-success  mb-3" style="max-width: 18rem;">
-                <div class="card-header">Graduate Course</div>
-                <div class="card-body">
-                  <h5 class="card-title">Tuition Costs</h5>
-                  <p class="card-text">In State tuition: ${{institutionCost.tuition_rates_instate}}</p>
-                  <p class="card-text">Out of State tuition: ${{institutionCost.tuition_rates_outofstate}}</p>
-                  <p class="card-text">Online tuition: ${{institutionCost.tuition_rates_online}}</p>
-                  <p class="card-text">International tuition: ${{institutionCost.tuition_rates_international}}</p>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 

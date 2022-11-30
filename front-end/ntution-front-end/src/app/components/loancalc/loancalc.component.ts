@@ -11,14 +11,12 @@ export class LoancalcComponent implements OnInit {
 
   isDisplayedPerMonth: Boolean = false;
   isDisplayedByDate: Boolean = true;
-
   loanCalculation: loanCalc = new loanCalc();
-  replacementLengthCurrent: any = 0;
-  interestPaymentsCurrent: any = 0;
-  totalCostCurrent: any = 0;
+  replacementLengthCurrent: Number = 0;
+  interestPaymentsCurrent: Number = 0;
+  totalCostCurrent: Number = 0;
 
   constructor() {
- 
     this.isDisplayedByDate = true;
   }
 
@@ -32,11 +30,33 @@ export class LoancalcComponent implements OnInit {
   //   this.isDisplayedByDate = true;
   // }
 
-  calculateLoan(){
-   
-    this.replacementLengthCurrent = 403;
-    this.interestPaymentsCurrent = 13334;
-    this.totalCostCurrent = 48334;
+  calculateLoan(balance: number, interestRate: number, years: number) {
+    console.log({
+      inputBalance: balance,
+      inputRate: interestRate,
+      inputYears: years
+    })
+    const finalBalance = (balance * (1 + ((interestRate/100) * (years))));
+    const totalInterest = (finalBalance - balance);
+    const mPayment = (finalBalance / (years * 12))
+
+    this.replacementLengthCurrent = Math.floor(mPayment);
+    this.interestPaymentsCurrent = Math.floor(totalInterest);
+    this.totalCostCurrent = Math.floor(finalBalance);
+  }
+
+  onKey(event: any, field: Number) {
+    switch(field) {
+      case 0:
+        this.loanCalculation.currentLoanBalance = event.target.value;
+        return;
+      case 1:
+        this.loanCalculation.annualInterestRate = event.target.value;
+        return;
+      case 2:
+        this.loanCalculation.loanTerms = event.target.value;
+        return;
+    }
   }
 
   ngOnInit(): void {
