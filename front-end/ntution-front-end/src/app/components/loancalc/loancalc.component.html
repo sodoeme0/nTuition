@@ -14,15 +14,15 @@
                         <div class="card-body form-group">
                             <div class="col-lg-4 col-md-4 col-sm-12">
                                 <h5 class="card-title">Current Loan Balance</h5>
-                                <input class="form-control" [(ngModel)]="loanCalculation.currentLoanBalance">
+                                <input class="form-control" type="number" (keyup)="onKey($event, 0)" [(ngModel)]="loanCalculation.currentLoanBalance" required>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12">
                                 <h5 class="card-title">Annual Interest Rate</h5>
-                                <input class="form-control" [(ngModel)]="loanCalculation.annualInterestRate">
+                                <input class="form-control" type="number" (keyup)="onKey($event, 1)" [(ngModel)]="loanCalculation.annualInterestRate" required>
                             </div>
                             <div class="col-lg-4  col-md-4 col-sm-12">
                                 <h5 class="card-title">Loan Terms (Years)</h5>
-                                <input class="form-control" type="text" [(ngModel)]="loanCalculation.loanTerms">
+                                <input class="form-control" type="number" (keyup)="onKey($event, 2)" [(ngModel)]="loanCalculation.loanTerms" required>
                             </div>
 
                         </div> <!-- end card-body -->
@@ -56,7 +56,7 @@
                     <div class="card-body col-12">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div id="calcButton">
-                        <input type="button" class="calcButton" value="Calculate" (click)="calculateLoan()"/>
+                        <input type="button" class="calcButton" value="Calculate" (click)="calculateLoan(loanCalculation.currentLoanBalance, loanCalculation.annualInterestRate, loanCalculation.loanTerms)"/>
                     </div>
                     </div>
                     </div>
